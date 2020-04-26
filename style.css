@@ -1,0 +1,12 @@
+.container {
+    scroll-padding-top: 4em;
+    margin-top: 4em;
+}
+
+#game {
+    display: none;
+}
+
+#scores {
+    display:none;
+}
