@@ -1,17 +1,12 @@
-// create variables
+// timer variables
 const second = 1000
-let correct = 0
-let wrong = 0
-let currentQuestionIndex = 0
 let timer = 60 * second
 
-//HTML elements
-let questionH1 = document.getElementById("Question")
-let optOne = document.getElementById("optOne")
-let optTwo = document.getElementById("optTwo")
-let optThree = document.getElementById("optThree")
-let optFour = document.getElementById("optFour")
+// score variables
+let correct = 0
+let wrong = 0
 
+// array of Question and answer objects
 const questions = [
     {
         question: "What is my favorite color?",
@@ -22,20 +17,20 @@ const questions = [
         answer: "4"
     },
     {
-        question: "What is my favorite color?",
-        option1: "Red",
-        option2: "Green",
-        option3: "Seafoam",
-        option4: "Grey",
-        answer: "4"
+        question: "What is my favorite animal?",
+        option1: "penguin",
+        option2: "dog",
+        option3: "bat",
+        option4: "snake",
+        answer: "2"
     },
     {
-        question: "What is my favorite color?",
-        option1: "Red",
-        option2: "Green",
-        option3: "Seafoam",
-        option4: "Grey",
-        answer: "4"
+        question: "What is the capital of Korea?",
+        option1: "Pyongyang",
+        option2: "Seoul",
+        option3: "Washington",
+        option4: "Phunket",
+        answer: "1"
     },
     {
         question: "What is my favorite color?",
@@ -47,9 +42,27 @@ const questions = [
     }
 ]
 
+// used to cycle through array of questions
+let currentQuestionIndex = 0
+let lastQuestionIndex = questions.length -1
+
+//HTML elements
+let questionH1 = document.getElementById("Question")
+let optOne = document.getElementById("optOne")
+let optTwo = document.getElementById("optTwo")
+let optThree = document.getElementById("optThree")
+let optFour = document.getElementById("optFour")
+
+
 
 // Function to detect if start button is pressed and to begin game
-// Function to reset clock and score elements
+const gameStart = () => {
+
+}
+// Function to detect when reset button is pressed and reset clock and score elements
+const gameReset = () => {
+
+}
 // Function to Render Question
 const renderQuestion = () => {
     let current = questions[currentQuestionIndex]
@@ -61,5 +74,27 @@ const renderQuestion = () => {
     optFour.innerText = current.option4
 
 }
+//run this when the user selects the correct answer
+const answerRight = () => {
+    return
+}
+
+//run this when the user selects the wrong answer
+const answerWrong = () => {
+    return
+}
+
+//renders game over screen
+const gameOverScreen = () => {
+
+}
+
+//saves score and initials to local storage
+const sumbitScore = () => {
+
+}
+
+
+/////////////////////// program start here
 
 renderQuestion()
