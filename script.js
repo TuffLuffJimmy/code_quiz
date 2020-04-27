@@ -33,18 +33,26 @@ const questions = [
         answer: "1"
     },
     {
-        question: "What is my favorite color?",
-        option1: "Red",
-        option2: "Green",
-        option3: "Seafoam",
-        option4: "Grey",
-        answer: "4"
+        question: "Commonly used data types does not include",
+        option1: "strings",
+        option2: "booleans",
+        option3: "alerts",
+        option4: "numbers",
+        answer: "3"
+    },
+    {
+        question: "The condition within an if/else statement is enclosed within ____",
+        option1: "quotes",
+        option2: "curly brackets",
+        option3: "parentheses",
+        option4: "square brackets",
+        answer: "1"
     }
 ]
 
 // used to cycle through array of questions
 let currentQuestionIndex = 0
-let lastQuestionIndex = questions.length -1
+let lastQuestionIndex = questions.length - 1
 
 //HTML elements
 let questionH1 = document.getElementById("Question")
@@ -52,11 +60,13 @@ let optOne = document.getElementById("optOne")
 let optTwo = document.getElementById("optTwo")
 let optThree = document.getElementById("optThree")
 let optFour = document.getElementById("optFour")
+// listeners
+let start = document.getElementById("startGame")
 
 
 
 // Function to detect if start button is pressed and to begin game
-const gameStart = () => {
+start.onclick = () => {
 
 }
 // Function to detect when reset button is pressed and reset clock and score elements
@@ -94,7 +104,10 @@ const sumbitScore = () => {
 
 }
 
-
+//renders timer
+const renderTimer = () => {
+    
+}
 /////////////////////// program start here
 
 renderQuestion()
