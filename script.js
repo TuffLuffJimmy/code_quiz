@@ -1,8 +1,8 @@
 // timer variables
 let timer = 60
 
-//score
-let timeLeft
+// score
+let score
 
 // array of Question and answer objects
 const questions = [
@@ -72,9 +72,13 @@ const gameReset = () => {
   correct = 0
   wrong = 0
   currentQuestionIndex = 0
+  renderQuestion(currentQuestionIndex)
 }
 // Function to Render Question
-const renderQuestion = () => {
+const renderQuestion = (num) => {
+  if (currentQuestionIndex >= lastQuestionIndex) {
+    gameOverScreen()
+  }
   const current = questions[currentQuestionIndex]
   console.log(current.question)
   questionH1.innerText = current.question
@@ -89,22 +93,38 @@ const checkAnswer = (selection) => {
     answerRight()
     console.log('correct')
   } else {
+    answerWrong()
     console.log('incorrect')
   }
 }
 // run this when the user selects the correct answer
 const answerRight = () => {
   timer += 5
+  currentQuestionIndex++
+  if (currentQuestionIndex >= lastQuestionIndex) {
+    gameOverScreen()
+  } else {
+    renderQuestion(currentQuestionIndex)
+  }
 }
 
 // run this when the user selects the wrong answer
 const answerWrong = () => {
   timer -= 10
+  currentQuestionIndex++
+  if (currentQuestionIndex >= lastQuestionIndex) {
+    gameOverScreen()
+  } else {
+    renderQuestion(currentQuestionIndex)
+  }
 }
 
 // renders game over screen
 const gameOverScreen = () => {
-
+  score = timer
+  document.getElementById('contain').classList.add('d-none')
+  document.getElementById('gameOver').classList.remove('d-none')
+  document.getElementById('finalScore').textContent = score
 }
 
 // saves score and initials to local storage
@@ -114,7 +134,7 @@ const sumbitScore = () => {
 
 // renders timer
 const renderTimer = () => {
-  if (timer > 0) {
+  if (timer >= 0) {
     timeLeft.innerText = timer
   } else {
     gameOverScreen()
@@ -126,4 +146,4 @@ setInterval(() => {
   timer--
   renderTimer()
 }, 1000)
-renderQuestion()
+renderQuestion(currentQuestionIndex)
