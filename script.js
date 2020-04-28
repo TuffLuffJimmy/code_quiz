@@ -1,113 +1,129 @@
 // timer variables
-const second = 1000
-let timer = 60 * second
+let timer = 60
 
-// score variables
-let correct = 0
-let wrong = 0
+//score
+let timeLeft
 
 // array of Question and answer objects
 const questions = [
-    {
-        question: "What is my favorite color?",
-        option1: "Red",
-        option2: "Green",
-        option3: "Seafoam",
-        option4: "Grey",
-        answer: "4"
-    },
-    {
-        question: "What is my favorite animal?",
-        option1: "penguin",
-        option2: "dog",
-        option3: "bat",
-        option4: "snake",
-        answer: "2"
-    },
-    {
-        question: "What is the capital of Korea?",
-        option1: "Pyongyang",
-        option2: "Seoul",
-        option3: "Washington",
-        option4: "Phunket",
-        answer: "1"
-    },
-    {
-        question: "Commonly used data types does not include",
-        option1: "strings",
-        option2: "booleans",
-        option3: "alerts",
-        option4: "numbers",
-        answer: "3"
-    },
-    {
-        question: "The condition within an if/else statement is enclosed within ____",
-        option1: "quotes",
-        option2: "curly brackets",
-        option3: "parentheses",
-        option4: "square brackets",
-        answer: "1"
-    }
+  {
+    question: 'What is my favorite color?',
+    option1: 'Red',
+    option2: 'Green',
+    option3: 'Seafoam',
+    option4: 'Grey',
+    answer: '4'
+  },
+  {
+    question: 'What is my favorite animal?',
+    option1: 'penguin',
+    option2: 'dog',
+    option3: 'bat',
+    option4: 'snake',
+    answer: '2'
+  },
+  {
+    question: 'What is the capital of Korea?',
+    option1: 'Pyongyang',
+    option2: 'Seoul',
+    option3: 'Washington',
+    option4: 'Phunket',
+    answer: '1'
+  },
+  {
+    question: 'Commonly used data types does not include',
+    option1: 'strings',
+    option2: 'booleans',
+    option3: 'alerts',
+    option4: 'numbers',
+    answer: '3'
+  },
+  {
+    question: 'The condition within an if/else statement is enclosed within ____',
+    option1: 'quotes',
+    option2: 'curly brackets',
+    option3: 'parentheses',
+    option4: 'square brackets',
+    answer: '1'
+  }
 ]
 
 // used to cycle through array of questions
 let currentQuestionIndex = 0
-let lastQuestionIndex = questions.length - 1
+const lastQuestionIndex = questions.length - 1
 
-//HTML elements
-let questionH1 = document.getElementById("Question")
-let optOne = document.getElementById("optOne")
-let optTwo = document.getElementById("optTwo")
-let optThree = document.getElementById("optThree")
-let optFour = document.getElementById("optFour")
+// HTML elements
+const questionH1 = document.getElementById('Question')
+const optOne = document.getElementById('optOne')
+const optTwo = document.getElementById('optTwo')
+const optThree = document.getElementById('optThree')
+const optFour = document.getElementById('optFour')
 // listeners
-let start = document.getElementById("startGame")
-
-
+const start = document.getElementById('startGame')
+const timeLeft = document.getElementById('timer')
 
 // Function to detect if start button is pressed and to begin game
 start.onclick = () => {
-
+  gameReset()
 }
 // Function to detect when reset button is pressed and reset clock and score elements
 const gameReset = () => {
-
+  timer = 60
+  correct = 0
+  wrong = 0
+  currentQuestionIndex = 0
 }
 // Function to Render Question
 const renderQuestion = () => {
-    let current = questions[currentQuestionIndex]
-    console.log(current.question)
-    questionH1.innerText = current.question
-    optOne.innerText = current.option1
-    optTwo.innerText = current.option2
-    optThree.innerText = current.option3
-    optFour.innerText = current.option4
-
+  const current = questions[currentQuestionIndex]
+  console.log(current.question)
+  questionH1.innerText = current.question
+  optOne.innerText = current.option1
+  optTwo.innerText = current.option2
+  optThree.innerText = current.option3
+  optFour.innerText = current.option4
 }
-//run this when the user selects the correct answer
+// checks to see if the user selected the right answer
+const checkAnswer = (selection) => {
+  if (selection === parseInt(questions[currentQuestionIndex].answer)) {
+    answerRight()
+    console.log('correct')
+  } else {
+    console.log('incorrect')
+  }
+}
+// run this when the user selects the correct answer
 const answerRight = () => {
-    return
+  timer += 5
 }
 
-//run this when the user selects the wrong answer
+// run this when the user selects the wrong answer
 const answerWrong = () => {
-    return
+  timer -= 10
 }
 
-//renders game over screen
+// renders game over screen
 const gameOverScreen = () => {
 
 }
 
-//saves score and initials to local storage
+// saves score and initials to local storage
 const sumbitScore = () => {
 
 }
 
-//renders timer
+// renders timer
 const renderTimer = () => {
-    
+  if (timer > 0) {
+    timeLeft.innerText = timer
+  } else {
+    gameOverScreen()
+  }
 }
-/////////////////////// program start here
 
+/// //////////////////// program start here
+setInterval(() => {
+  timer--
+  renderTimer()
+}, 1000)
 renderQuestion()
