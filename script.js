@@ -141,7 +141,7 @@ document.getElementById('submitInitials').onclick = event => {
 
 // renders timer
 const renderTimer = () => {
-  if (timer >= 0) {
+  if (timer > 0) {
     timeLeft.innerText = timer
   } else {
     gameOverScreen()
