@@ -2,7 +2,7 @@
 let timer = 60
 
 // score
-let score
+let score = 0
 
 // array of Question and answer objects
 const questions = [
@@ -128,8 +128,15 @@ const gameOverScreen = () => {
 }
 
 // saves score and initials to local storage
-const sumbitScore = () => {
-
+document.getElementById('submitInitials').onclick = event => {
+  event.preventDefault()
+  const key = document.getElementById('initials').value
+  console.log(key)
+  console.log(score)
+  if (key) {
+    localStorage.setItem(key, score)
+  }
+  renderHighScores(key)
 }
 
 // renders timer
@@ -141,9 +148,19 @@ const renderTimer = () => {
   }
 }
 
+const renderHighScores = (key) => {
+  for (let i = 0; i < localStorage.length; i++) {
+    const usr = localStorage.key(i)
+    const recentTime = localStorage.getItem(key)
+    document.getElementById('highScore').innerHTML += `${usr}: ${recentTime} seconds left <br />`
+
+  }
+}
 /// //////////////////// program start here
 setInterval(() => {
-  timer--
+  if (timer > score) {
+    timer--
+  }
   renderTimer()
 }, 1000)
 renderQuestion(currentQuestionIndex)

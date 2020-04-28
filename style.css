@@ -1,11 +1,13 @@
 .container {
     margin-top: 4em;
-    border: solid red 2px;
+    border: solid grey 2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 
 #Question {
-    Padding: 1em;
+    padding: 1em;
 }
 /* #game {
     display: none;
@@ -14,3 +16,6 @@
 #scores {
     display:none;
 } */
+fieldset {
+    padding:  1em;
+}

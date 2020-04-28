@@ -25,12 +25,16 @@
 			<div id="scores"></div>
 		</div>
 
-		<div id="gameOver" class="d-none">
+		<div id="gameOver" class="container d-none">
 			<h1>Your final score is: <span id="finalScore"></span></h1>
 			<form>
-				<input type="name" class="form-control" id="initials" placeholder="Please input your initials here">
+				<input type="text" class="form-control" id="initials" placeholder="Please input your initials here...">
 				<button type="submit" class="btn btn-primary" id="submitInitials">Submit</button>
 			</form>
+			<fieldset class="container">
+				<legend>High Scores</legend>
+				<div id="highScore"></div>
+			</fieldset>
 		</div>
 
 		
